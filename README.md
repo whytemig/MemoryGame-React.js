@@ -46,7 +46,7 @@ function shuffle(a) {
 
   --->Using the useEffect hook to generate a new shuffled deck when the component mounts or when setDeck changes.<---
 
-    const pickCard = (cardIndex) => {
+  const pickCard = (cardIndex) => {
     if (deck[cardIndex].isFlipped !== false) {
       return;
     } else if (deck[cardIndex].isFlipped === false) {
@@ -58,8 +58,7 @@ function shuffle(a) {
         }
         return card;
       });
-
-      if (newPickedCards.length === 2) {
+  if (newPickedCards.length === 2) {
         const card1Index = newPickedCards[0];
         const card2Index = newPickedCards[1];
         if (newDeck[card1Index].symbol !== newDeck[card2Index].symbol) {
@@ -76,13 +75,14 @@ function shuffle(a) {
       setPickedCards(newPickedCards);
     }
   };
+      
 --->Defining the pickCard function to handle card selection.
 Checking if the selected card is not flipped already.
 Flipping the selected card and updating the pickedCards array.
 Checking if two cards are picked and comparing their symbols. If symbols don't match, the cards are unflipped after a delay.
 Updating the deck and pickedCards states accordingly.<---
 
-  const unflipCard = (card1Index, card2Index) => {
+ const unflipCard = (card1Index, card2Index) => {
     let card1 = { ...deck[card1Index], isFlipped: false };
     let card2 = { ...deck[card2Index], isFlipped: false };
     const newDeck = deck.map((card, index) => {
@@ -98,7 +98,7 @@ Updating the deck and pickedCards states accordingly.<---
   };
 --->Defining the unflipCard function to unflip cards by changing the isFlipped property back to false.<---
 
-  const cardJSX = deck.map((card, index) => {
+   const cardJSX = deck.map((card, index) => {
     return (
       <MemoryCard
         symbol={card.symbol}
@@ -111,7 +111,7 @@ Updating the deck and pickedCards states accordingly.<---
 --->Generating an array of JSX elements for the memory cards. Each MemoryCard component receives the card's symbol, isFlipped state, and a pickCard function.<---
 
 
-  return (
+ return (
     <>
       <div>
         <h1 className="header">Memory Game</h1>
@@ -124,6 +124,7 @@ Updating the deck and pickedCards states accordingly.<---
       <div></div>
     </>
   );
+};
 }
 --->Returning the JSX structure for the game board.
 Displaying the title and instructions.
